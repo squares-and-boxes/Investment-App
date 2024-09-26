@@ -12,4 +12,4 @@ User stories:
 - As a user, I want to be able to **create** a new investment and **add** it to a set portfolio
 - As a user, I want to be able to **view** the current investments in the portfolio and sample statistics of the investments
 - As a user, I want to be able to **filter** current investments by investment type
-- As a user, I want to be able to **delete or modify** investment entries in my portfolio
+- As a user, I want to be able to **delete** investment entries in my portfolio, with a confirmation pop-up for this action
