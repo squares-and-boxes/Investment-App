@@ -5,5 +5,5 @@ public class Sample {
 
     public Sample() {
         other = 4;
-    }
+    } 
 }
