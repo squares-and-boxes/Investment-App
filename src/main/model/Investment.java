@@ -12,22 +12,33 @@ public class Investment {
     // REQUIRES: investedAmount>0, 0<expectedReturn<=1.
     // EFFECTS: Creates investment object and assigns investmentType to type, investmentName to name,
     //          investedAmount to amount, expectedReturn to expRet, dateOfPurchase to date.
-    public Investment(String investmentType, String investmentName, Double investedAmount, double expectedReturn, String dateOfPurchase) {
+    public Investment(String investmentType, String investmentName, double investedAmount, 
+                      double expectedReturn, String dateOfPurchase) {
+        this.type = investmentType;
+        this.name = investmentName;
+        this.amount = investedAmount;
+        this.expRet = expectedReturn;
+        this.date = dateOfPurchase;
     }
 
     public String getType() {
+        return type;
     }
 
     public String getName() {
+        return name;
     }
 
-    public int getAmount() {
+    public double getAmount() {
+        return amount;
     }
 
-    public int getExpReturn() {
+    public double getExpReturn() {
+        return expRet;
     }
 
     public String getDate() {
+        return date;
     }
 
 }

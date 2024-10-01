@@ -12,11 +12,11 @@ public class TestInvestment {
     
     @BeforeEach
     void runBefore() {
-        testInvestment = new Investment(String "Stock", 
-                                        String "META Equity", 
-                                        double 500, 
-                                        double 0.15, 
-                                        String "2024-01-01");
+        testInvestment = new Investment("Stock", 
+                                        "META Equity", 
+                                        500, 
+                                        0.15, 
+                                        "2024-01-01");
     }
 
     @Test
