@@ -13,16 +13,17 @@ public class ListOfInvestment {
     public ListOfInvestment() {
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds investment to the list of investments
+    public void add(Investment investment) {
+    }
+
     // REQUIRES: key is a type of investment that is already present.]
     // MODIFIES: this
     // EFFECTS: keeps only the investments for which the type of investment and key match
     public void filter(String key) {
     }
 
-    // MODIFIES: this
-    // EFFECTS: adds investment to the list of investments
-    public void add(Investment investment) {
-    }
 
     // REQUIRES: key is an investment name that is already present.
     // MODIFIES: this
@@ -30,14 +31,11 @@ public class ListOfInvestment {
     public void delete(String key) {
     }
 
-    // EFFECTS: produces a list of statistics in the order [mean,median,std,max,min,return]
+    // EFFECTS: produces a list of statistics in the order [mean,std,max,min,return]
     public List<Double> summarize() {
     }
 
     public int getNumInvestment() {
-    }
-
-    public List<Investment> getListOfInvestment() {
     }
 
 
