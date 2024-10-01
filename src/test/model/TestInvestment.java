@@ -5,15 +5,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class TestSample {
+public class TestInvestment {
+
+    private Investment testInvestment;
     
     @BeforeEach
     void runBefore() {
-
+        testInvestment = new Investment();
     }
 
     @Test
-    void sampleTest() {
-        assertTrue(true);
+    void testConstructor() {
+        assertEquals();
     }
 }
