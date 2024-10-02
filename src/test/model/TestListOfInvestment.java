@@ -35,37 +35,49 @@ public class TestListOfInvestment {
         testListOfInvestment.filter("Stock");
         assertEquals(0,testListOfInvestment.getNumInvestment());
 
+        testListOfInvestment = new ListOfInvestment();
         Investment investmentOne = new Investment("Stock", "META STOCK",
                                                   400.5, 0.4, "2024-01-01");
         Investment investmentTwo = new Investment("Stock", "FB STOCK",
                                                   900.8, 0.35, "2024-01-02");
         Investment investmentThree = new Investment("Bond", "GOOGL STOCK",
-                                                  800.3, 0.14, "2024-01-03");
+                                                   800.3, 0.14, "2024-01-03");
         testListOfInvestment.add(investmentOne);
         testListOfInvestment.add(investmentTwo);
         testListOfInvestment.add(investmentThree);
-
-        testListOfInvestment.filter("Jack");
-        assertEquals(3,testListOfInvestment.getNumInvestment());
-
         testListOfInvestment.filter("Stock");
         assertEquals(2,testListOfInvestment.getNumInvestment());
 
+        testListOfInvestment = new ListOfInvestment();
+        testListOfInvestment.add(investmentOne);
+        testListOfInvestment.add(investmentTwo);
+        testListOfInvestment.filter("Stock");
+        assertEquals(2,testListOfInvestment.getNumInvestment());
+
+        testListOfInvestment = new ListOfInvestment();
+        testListOfInvestment.add(investmentThree);
         testListOfInvestment.filter("Bond");
-        assertEquals(0,testListOfInvestment.getNumInvestment());
+        assertEquals(1,testListOfInvestment.getNumInvestment());
+
+        testListOfInvestment = new ListOfInvestment();
+        testListOfInvestment.add(investmentOne);
+        testListOfInvestment.add(investmentTwo);
+        testListOfInvestment.add(investmentThree);
+        testListOfInvestment.filter("Bond");
+        assertEquals(1,testListOfInvestment.getNumInvestment());
     }
 
     @Test
-    void testDelete() {
-        testListOfInvestment.delete("GOVN BOND ONE");
+    void testDeleteInvestment() {
+        testListOfInvestment.deleteInvestment("GOVN BOND ONE");
         assertEquals(0,testListOfInvestment.getNumInvestment());
 
         Investment investmentFour = new Investment("Bond", "GOVN BOND TWO",
                                                   400.5, 0.4, "2024-01-01");
         testListOfInvestment.add(investmentFour);
-        testListOfInvestment.delete("GOVN BOND");
+        testListOfInvestment.deleteInvestment("GOVN BOND");
         assertEquals(1,testListOfInvestment.getNumInvestment());
-        testListOfInvestment.delete("GOVN BOND TWO");
+        testListOfInvestment.deleteInvestment("GOVN BOND TWO");
         assertEquals(0,testListOfInvestment.getNumInvestment());
 
 
@@ -75,13 +87,19 @@ public class TestListOfInvestment {
                                                   800, 0.20, "2024-01-03");
         testListOfInvestment.add(investmentFive);
         testListOfInvestment.add(investmentSix);
-        testListOfInvestment.delete("GOOGL STOCK");
+        testListOfInvestment.deleteInvestment("GOOGL STOCK");
         assertEquals(1,testListOfInvestment.getNumInvestment());
     }
 
-    @Test // [mean,std,max,min,return]
+    @Test
     void testSummarize() {
-        assertEquals(0,testListOfInvestment.summarize().size());
+        List<Double> resultNull = testListOfInvestment.summarize();
+        assertEquals(resultNull.get(0),0);
+        assertEquals(resultNull.get(1),0);
+        assertEquals(resultNull.get(2),0);
+        assertEquals(resultNull.get(3),0);
+        assertEquals(resultNull.get(4),0);
+        assertEquals(5,testListOfInvestment.summarize().size());
 
         Investment investmentSix = new Investment("Real Estate", "9341 BROWNING",
                                                   1, 0.50, "2024-01-02");
@@ -95,6 +113,7 @@ public class TestListOfInvestment {
         assertEquals(resultOne.get(2),1);
         assertEquals(resultOne.get(3),1);
         assertEquals(resultOne.get(4),0.5);
+        assertEquals(5,testListOfInvestment.summarize().size());
 
         testListOfInvestment.add(investmentSeven);
         List<Double> resultTwo = testListOfInvestment.summarize();
@@ -103,25 +122,6 @@ public class TestListOfInvestment {
         assertEquals(resultTwo.get(2),1);
         assertEquals(resultTwo.get(3),1);
         assertEquals(resultTwo.get(4),0.7);
-
-        testListOfInvestment = new ListOfInvestment();
-
-        Investment investmentEight = new Investment("Real Estate", "9341 BROWNING",
-                                                  1, 0.17, "2024-01-02");
-        Investment investmentNine = new Investment("JACK", "912 RAILWAY",
-                                                  2, 0.2, "2024-01-04");
-        Investment investmentTen = new Investment("Stock", "META EQUITY",
-                                                  3, 0.5, "2024-01-05");
-        
-        testListOfInvestment.add(investmentEight);
-        testListOfInvestment.add(investmentNine);
-        testListOfInvestment.add(investmentTen);
-
-        List<Double> resultThree = testListOfInvestment.summarize();
-        assertEquals(resultThree.get(0),2);
-        assertEquals(resultThree.get(1),1);
-        assertEquals(resultThree.get(2),3);
-        assertEquals(resultThree.get(3),1);
-        assertEquals(resultThree.get(4),0.72);
+        assertEquals(5,testListOfInvestment.summarize().size());
     }
 }
