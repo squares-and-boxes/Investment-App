@@ -8,6 +8,8 @@ import java.util.ArrayList;
 public class ListOfInvestment {
 
     private List<Investment> listOfInvestment;  // list of investments
+    private List<Investment> filteredList;  // list of filtered investments
+
     private List<Double> nullList;  // holds list of 0.0's, used by summarize method
     private double max;  // max value of invested amounts
     private double min = Double.POSITIVE_INFINITY;  // min value of invested amounts
@@ -17,6 +19,7 @@ public class ListOfInvestment {
     // EFFECTS: Initializes an empty list of investments
     public ListOfInvestment() {
         listOfInvestment = new ArrayList<Investment>();
+        filteredList = new ArrayList<Investment>();
         
         nullList = new ArrayList<Double>();
         nullList.add(0.0);
@@ -37,12 +40,9 @@ public class ListOfInvestment {
     // EFFECTS: keeps only the investments for which the type of investment and key
     // match
     public void filter(String key) {
-        int i = 0;
-        while (!(listOfInvestment.isEmpty()) && i < listOfInvestment.size()) {
-            if (!(listOfInvestment.get(i).getType().equals(key))) {
-                listOfInvestment.remove(i);
-            } else {
-                i++;
+        for (Investment i : listOfInvestment) {
+            if (i.getType().equals(key)) {
+                filteredList.add(i);
             }
         }
     }
@@ -115,6 +115,10 @@ public class ListOfInvestment {
         return listOfInvestment.size();
     }
 
+    public int getNumFilteredInvestment() {
+        return filteredList.size();
+    }
+
     public List<String> getInvestmentNames() {
         List<String> accumulator = new ArrayList<String>();
 
@@ -139,6 +143,17 @@ public class ListOfInvestment {
 
     public void getPrintedInvestments() {
         for (Investment i : listOfInvestment) {
+            String output = "Name: " + i.getName() + ", " + "\t" + "Type: " + i.getType() + ", " + "\t" 
+                    + "Amount: " + Double.toString(i.getAmount()) + ", " + "\t" 
+                    + "Expected return: " + Double.toString(i.getExpReturn()) + ", " + "\t" 
+                    + "Date of purchase: " + i.getDate() + ", " + "\t" 
+                    + "\n";
+            System.out.println(output);
+        }
+    }
+
+    public void getPrintedFilteredInvestments() {
+        for (Investment i : filteredList) {
             String output = "Name: " + i.getName() + ", " + "\t" + "Type: " + i.getType() + ", " + "\t" 
                     + "Amount: " + Double.toString(i.getAmount()) + ", " + "\t" 
                     + "Expected return: " + Double.toString(i.getExpReturn()) + ", " + "\t" 

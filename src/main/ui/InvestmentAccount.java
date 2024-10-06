@@ -205,8 +205,7 @@ public class InvestmentAccount {
             System.out.println("Type not present. Try again.");
             commandFour = input.next();
         }
-
         listOfInvestment.filter(commandFour);
-        doView();
+        listOfInvestment.getPrintedFilteredInvestments();
     }
 }

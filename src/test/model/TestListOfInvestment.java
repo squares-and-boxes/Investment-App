@@ -46,17 +46,20 @@ public class TestListOfInvestment {
         testListOfInvestment.add(investmentTwo);
         testListOfInvestment.add(investmentThree);
         testListOfInvestment.filter("Stock");
-        assertEquals(2,testListOfInvestment.getNumInvestment());
+        assertEquals(2,testListOfInvestment.getNumFilteredInvestment());
+        assertEquals(3,testListOfInvestment.getNumInvestment());
 
         testListOfInvestment = new ListOfInvestment();
         testListOfInvestment.add(investmentOne);
         testListOfInvestment.add(investmentTwo);
         testListOfInvestment.filter("Stock");
+        assertEquals(2,testListOfInvestment.getNumFilteredInvestment());
         assertEquals(2,testListOfInvestment.getNumInvestment());
 
         testListOfInvestment = new ListOfInvestment();
         testListOfInvestment.add(investmentThree);
         testListOfInvestment.filter("Bond");
+        assertEquals(1,testListOfInvestment.getNumFilteredInvestment());
         assertEquals(1,testListOfInvestment.getNumInvestment());
 
         testListOfInvestment = new ListOfInvestment();
@@ -64,7 +67,8 @@ public class TestListOfInvestment {
         testListOfInvestment.add(investmentTwo);
         testListOfInvestment.add(investmentThree);
         testListOfInvestment.filter("Bond");
-        assertEquals(1,testListOfInvestment.getNumInvestment());
+        assertEquals(1,testListOfInvestment.getNumFilteredInvestment());
+        assertEquals(3,testListOfInvestment.getNumInvestment());
     }
 
     @Test
