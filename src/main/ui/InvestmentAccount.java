@@ -10,8 +10,10 @@ import java.util.ArrayList;
 // Investment manager application
 public class InvestmentAccount {
 
-    private Scanner input;   // stores user input
-    private ListOfInvestment listOfInvestment;  // stores investments
+    private Scanner input; // stores user input
+    private ListOfInvestment listOfInvestment; // stores investments
+    private List<String> checkRepeatName;   // checks name repetition when adding investment
+    private String name;   // stores investment name
 
     // EFFECTS: initializes the app interface
     public InvestmentAccount() {
@@ -45,9 +47,10 @@ public class InvestmentAccount {
     private void init() {
         listOfInvestment = new ListOfInvestment();
         input = new Scanner(System.in);
+        checkRepeatName = new ArrayList<String>();
         input.useDelimiter("\r?\n|\r");
     }
-    
+
     // MODIFIES: this
     // EFFECTS: processes human commands
     private void handleCommand(String c) {
@@ -74,7 +77,6 @@ public class InvestmentAccount {
             System.out.println("Invalid selection");
         }
     }
-
 
     // EFFECTS: displays options
     private void displayMenuOptions() {
@@ -128,19 +130,11 @@ public class InvestmentAccount {
     // MODIFIES: this
     // EFFECTS: add investment
     private void doAddInvestment() {
-        List<String> checkRepeatName = new ArrayList<String>(); 
-
         System.out.println("Enter type of investment:");
         String type = input.next();
-        System.out.println("Enter name of investment:");
-        String name = input.next();
-        while (checkRepeatName.contains(name)) {
-            System.out.println("Name already used.");
-            System.out.println("Enter name of investment:");
-            name = input.next();
-        }
-        checkRepeatName.add(name);
-    
+
+        nameHelper();
+
         System.out.println("Enter amount invested:");
         double amount = input.nextDouble();
         while (amount < 0) {
@@ -159,8 +153,21 @@ public class InvestmentAccount {
         System.out.println("Enter date of investment (in YYYY-MM-DD):");
         String date = input.next();
 
-        Investment newInvestment = new Investment(type,name,amount,ret,date);
+        Investment newInvestment = new Investment(type, name, amount, ret, date);
         listOfInvestment.add(newInvestment);
+    }
+
+    // EFFECTS: gets distinct name input from user
+    private void nameHelper() {
+        System.out.println("Enter name of investment:");
+        name = input.next();
+        
+        while (checkRepeatName.contains(name)) {
+            System.out.println("Name already used.");
+            System.out.println("Enter name of investment:");
+            name = input.next();
+        }
+        checkRepeatName.add(name);
     }
 
     // MODIFIES: this
