@@ -123,7 +123,7 @@ public class InvestmentAccount {
         if (listOfInvestment.getNumInvestment() == 0) {
             System.out.println("\nNothing to see!");
         } else {
-            listOfInvestment.printInvestments();
+            listOfInvestment.getPrintedInvestments();
         }
     }
 

@@ -137,7 +137,7 @@ public class ListOfInvestment {
         return accumulator;
     }
 
-    public void printInvestments() {
+    public void getPrintedInvestments() {
         for (Investment i : listOfInvestment) {
             String output = "Name: " + i.getName() + ", " + "\t" + "Type: " + i.getType() + ", " + "\t" 
                     + "Amount: " + Double.toString(i.getAmount()) + ", " + "\t" 
