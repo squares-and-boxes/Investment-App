@@ -100,5 +100,37 @@ public class ListOfInvestment {
         return listOfInvestment.size();
     }
 
+    public List<String> getInvestmentNames() {
+        List<String> accumulator = new ArrayList<String>();
 
+        for (Investment i : listOfInvestment) {
+            String name = i.getName();
+            accumulator.add(name);
+        }
+
+        return accumulator;
+    }
+
+    public List<String> getInvestmentTypes() {
+        List<String> accumulator = new ArrayList<String>();
+
+        for (Investment i : listOfInvestment) {
+            String type = i.getType();
+            accumulator.add(type);
+        }
+
+        return accumulator;
+    }
+
+    public void printInvestments() {
+        for (Investment i : listOfInvestment) {
+            String output = "Name: "+i.getName() + ", " + "\t" +
+                            "Type: "+i.getType() + ", "  + "\t" +
+                            "Amount: "+ Double.toString(i.getAmount()) + ", "  + "\t" +
+                            "Expected return: " + Double.toString(i.getExpReturn()) + ", " + "\t" + 
+                            "Date of purchase: "+ i.getDate() + ", "  + "\t" +
+                            "\n";
+            System.out.println(output);
+        }
+    }
 }
