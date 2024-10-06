@@ -12,8 +12,8 @@ public class InvestmentAccount {
 
     private Scanner input; // stores user input
     private ListOfInvestment listOfInvestment; // stores investments
-    private List<String> checkRepeatName;   // checks name repetition when adding investment
-    private String name;   // stores investment name
+    private List<String> checkRepeatName; // checks name repetition when adding investment
+    private String name; // stores investment name
 
     // EFFECTS: initializes the app interface
     public InvestmentAccount() {
@@ -161,7 +161,7 @@ public class InvestmentAccount {
     private void nameHelper() {
         System.out.println("Enter name of investment:");
         name = input.next();
-        
+
         while (checkRepeatName.contains(name)) {
             System.out.println("Name already used.");
             System.out.println("Enter name of investment:");

@@ -94,11 +94,11 @@ public class TestListOfInvestment {
     @Test
     void testSummarize() {
         List<Double> resultNull = testListOfInvestment.summarize();
-        assertEquals(resultNull.get(0),0);
-        assertEquals(resultNull.get(1),0);
-        assertEquals(resultNull.get(2),0);
-        assertEquals(resultNull.get(3),0);
-        assertEquals(resultNull.get(4),0);
+        assertEquals(0,resultNull.get(0));
+        assertEquals(0,resultNull.get(1));
+        assertEquals(0,resultNull.get(2));
+        assertEquals(0,resultNull.get(3));
+        assertEquals(0,resultNull.get(4));
         assertEquals(5,testListOfInvestment.summarize().size());
 
         Investment investmentSix = new Investment("Real Estate", "9341 BROWNING",
@@ -108,20 +108,20 @@ public class TestListOfInvestment {
 
         testListOfInvestment.add(investmentSix);
         List<Double> resultOne = testListOfInvestment.summarize();
-        assertEquals(resultOne.get(0),1);
-        assertEquals(resultOne.get(1),0);
-        assertEquals(resultOne.get(2),1);
-        assertEquals(resultOne.get(3),1);
-        assertEquals(resultOne.get(4),0.5);
+        assertEquals(1,resultOne.get(0));
+        assertEquals(0,resultOne.get(1));
+        assertEquals(1,resultOne.get(2));
+        assertEquals(1,resultOne.get(3));
+        assertEquals(0.5,resultOne.get(4));
         assertEquals(5,testListOfInvestment.summarize().size());
 
         testListOfInvestment.add(investmentSeven);
         List<Double> resultTwo = testListOfInvestment.summarize();
-        assertEquals(resultTwo.get(0),1);
-        assertEquals(resultTwo.get(1),0);
-        assertEquals(resultTwo.get(2),1);
-        assertEquals(resultTwo.get(3),1);
-        assertEquals(resultTwo.get(4),0.7);
+        assertEquals(1,resultTwo.get(0));
+        assertEquals(0,resultTwo.get(1));
+        assertEquals(1,resultTwo.get(2));
+        assertEquals(1,resultTwo.get(3));
+        assertEquals(0.7,resultTwo.get(4));
         assertEquals(5,testListOfInvestment.summarize().size());
     }
 }

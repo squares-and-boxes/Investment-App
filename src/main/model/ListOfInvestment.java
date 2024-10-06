@@ -7,11 +7,23 @@ import java.util.ArrayList;
 // and providing summary statistics
 public class ListOfInvestment {
 
-    private List<Investment> listOfInvestment;    // list of investments
+    private List<Investment> listOfInvestment;  // list of investments
+    private List<Double> nullList;  // holds list of 0.0's, used by summarize method
+    private double max;  // max value of invested amounts
+    private double min = Double.POSITIVE_INFINITY;  // min value of invested amounts
+    private double mean;  // mean value of invested amounts
+    private double std;  // std of invested amounts
 
     // EFFECTS: Initializes an empty list of investments
     public ListOfInvestment() {
         listOfInvestment = new ArrayList<Investment>();
+        
+        nullList = new ArrayList<Double>();
+        nullList.add(0.0);
+        nullList.add(0.0);
+        nullList.add(0.0);
+        nullList.add(0.0);   
+        nullList.add(0.0);
     }
 
     // MODIFIES: this
@@ -22,7 +34,8 @@ public class ListOfInvestment {
 
     // REQUIRES: key is a type of investment that is already present.]
     // MODIFIES: this
-    // EFFECTS: keeps only the investments for which the type of investment and key match
+    // EFFECTS: keeps only the investments for which the type of investment and key
+    // match
     public void filter(String key) {
         int i = 0;
         while (!(listOfInvestment.isEmpty()) && i < listOfInvestment.size()) {
@@ -52,40 +65,21 @@ public class ListOfInvestment {
     // EFFECTS: produces a list of statistics in the order [mean,std,max,min,return]
     public List<Double> summarize() {
         if (listOfInvestment.isEmpty()) {
-            List<Double> nullList = new ArrayList<Double>();
-            nullList.add(0.0);
-            nullList.add(0.0);
-            nullList.add(0.0);
-            nullList.add(0.0);
-            nullList.add(0.0);
-
             return nullList;
         }
 
         double cumsum = 0;
-        double maxMarker = 0;
-        double minMarker = 1000000000;
-        double retMarker = 0;
+        double ret = 0;
         for (Investment i : listOfInvestment) {
             cumsum += i.getAmount();
-            retMarker += i.getExpReturn() * i.getAmount();
-            if (i.getAmount() > maxMarker) {
-                maxMarker = i.getAmount();
-            }
-            if (i.getAmount() < minMarker) {
-                minMarker = i.getAmount();
-            }
+            ret += i.getExpReturn() * i.getAmount();
+            maxHelper(i);
+            minHelper(i);
         }
-        double mean = cumsum / listOfInvestment.size();
-        double max = maxMarker;
-        double min = minMarker;
-        double ret = retMarker;
+        mean = cumsum / listOfInvestment.size();
 
-        double std = 0;
-        for (Investment i : listOfInvestment) {
-            std += (i.getAmount() - mean) * (i.getAmount() - mean);
-        }
-
+        stdHelper();
+        
         List<Double> list = new ArrayList<Double>();
         list.add(mean);
         list.add(std);
@@ -94,6 +88,27 @@ public class ListOfInvestment {
         list.add(ret);
 
         return list;
+    }
+
+    // EFFECTS: calculates standard deviation
+    private void stdHelper() {
+        for (Investment i : listOfInvestment) {
+            std += Math.sqrt(((i.getAmount() - mean) * (i.getAmount() - mean)) / getNumInvestment());
+        }
+    }
+
+    // EFFECTS: calculates maximum value in list
+    private void maxHelper(Investment inv) {
+        if (inv.getAmount() > max) {
+            max = inv.getAmount();
+        }
+    }
+
+    // EFFECTS: calculates minimum value in list
+    private void minHelper(Investment inv) {
+        if (inv.getAmount() < min) {
+            min = inv.getAmount();
+        }
     }
 
     public int getNumInvestment() {
@@ -124,12 +139,11 @@ public class ListOfInvestment {
 
     public void printInvestments() {
         for (Investment i : listOfInvestment) {
-            String output = "Name: "+i.getName() + ", " + "\t" +
-                            "Type: "+i.getType() + ", "  + "\t" +
-                            "Amount: "+ Double.toString(i.getAmount()) + ", "  + "\t" +
-                            "Expected return: " + Double.toString(i.getExpReturn()) + ", " + "\t" + 
-                            "Date of purchase: "+ i.getDate() + ", "  + "\t" +
-                            "\n";
+            String output = "Name: " + i.getName() + ", " + "\t" + "Type: " + i.getType() + ", " + "\t" 
+                    + "Amount: " + Double.toString(i.getAmount()) + ", " + "\t" 
+                    + "Expected return: " + Double.toString(i.getExpReturn()) + ", " + "\t" 
+                    + "Date of purchase: " + i.getDate() + ", " + "\t" 
+                    + "\n";
             System.out.println(output);
         }
     }
