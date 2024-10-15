@@ -15,6 +15,7 @@ public class InvestmentAccount {
     private ListOfInvestment listOfInvestment; // stores investments
     private List<String> checkRepeatName; // checks name repetition when adding investment
     private String name; // stores investment name
+    private String date;
 
     // EFFECTS: initializes the app interface
     public InvestmentAccount() {
@@ -150,16 +151,20 @@ public class InvestmentAccount {
             System.out.println("Enter expected return:");
             ret = input.nextDouble();
         }
+        dateHelper();
+        
+        Investment newInvestment = new Investment(type, name, amount, ret, date);
+        listOfInvestment.add(newInvestment);
+    }
 
+    // EFFECTS: get date in correct format from user
+    private void dateHelper() {
         System.out.println("Enter date of investment (in YYYY-MM-DD):");
-        String date = input.next();
+        date = input.next();
         while (!date.matches("\\d{4}-\\d{2}-\\d{2}")) {
             System.out.println("Invalid form. Try again.");
             date = input.next();
         }
-
-        Investment newInvestment = new Investment(type, name, amount, ret, date);
-        listOfInvestment.add(newInvestment);
     }
 
     // EFFECTS: gets distinct name input from user
