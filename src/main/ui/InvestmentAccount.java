@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 // Investment manager application
+// modelled on sample TellerApp UI
 public class InvestmentAccount {
 
     private Scanner input; // stores user input
