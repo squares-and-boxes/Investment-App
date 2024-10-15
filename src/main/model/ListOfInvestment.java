@@ -1,11 +1,15 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.List;
 import java.util.ArrayList;
 
 // Represents a list of investments, with the core functionalities of filtering, deleting, 
 // and providing summary statistics
-public class ListOfInvestment {
+public class ListOfInvestment implements Writable {
 
     private List<Investment> listOfInvestment;  // list of investments
     private List<Investment> filteredList;  // list of filtered investments
@@ -161,5 +165,15 @@ public class ListOfInvestment {
                     + "\n";
             System.out.println(output);
         }
+    }
+
+    @Override
+    public JSONObject toJson() {
+        return null;
+    }
+
+    // EFFECTS: returns investments in this list as a JSON array
+    private JSONArray investmentsToJson() {
+        return null;
     }
 }

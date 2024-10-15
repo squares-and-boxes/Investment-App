@@ -1,8 +1,11 @@
 package model;
 
+import persistence.Writable;
+import org.json.JSONObject;
+
 // Represents an investment having an investment type, investment name, amount invested, 
 // expected return, date of purchase
-public class Investment {
+public class Investment implements Writable {
     private String type; // investment type
     private String name; // investment name
     private double amount; // amount invested (in CAD $)
@@ -41,6 +44,11 @@ public class Investment {
 
     public String getDate() {
         return date;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        return null;
     }
 
 }
