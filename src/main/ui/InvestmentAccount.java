@@ -153,6 +153,10 @@ public class InvestmentAccount {
 
         System.out.println("Enter date of investment (in YYYY-MM-DD):");
         String date = input.next();
+        while (!date.matches("\\d{4}-\\d{2}-\\d{2}")) {
+            System.out.println("Invalid form. Try again.");
+            date = input.next();
+        }
 
         Investment newInvestment = new Investment(type, name, amount, ret, date);
         listOfInvestment.add(newInvestment);
