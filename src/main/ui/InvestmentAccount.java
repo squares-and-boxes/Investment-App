@@ -15,7 +15,7 @@ public class InvestmentAccount {
     private ListOfInvestment listOfInvestment; // stores investments
     private List<String> checkRepeatName; // checks name repetition when adding investment
     private String name; // stores investment name
-    private String date;
+    private String date; // stores investment date
 
     // EFFECTS: initializes the app interface
     public InvestmentAccount() {

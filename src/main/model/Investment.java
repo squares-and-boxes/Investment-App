@@ -26,22 +26,27 @@ public class Investment implements Writable {
         this.date = dateOfPurchase;
     }
 
+    // EFFECTS: gets type
     public String getType() {
         return type;
     }
 
+    // EFFECTS: gets name
     public String getName() {
         return name;
     }
 
+    // EFFECTS: gets amount
     public double getAmount() {
         return amount;
     }
 
+    // EFFECTS: gets expected return
     public double getExpReturn() {
         return expRet;
     }
 
+    // EFFECTS: gets date
     public String getDate() {
         return date;
     }

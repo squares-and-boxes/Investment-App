@@ -115,14 +115,17 @@ public class ListOfInvestment implements Writable {
         }
     }
 
+    // EFFECTS: get size of listOfInvestment
     public int getNumInvestment() {
         return listOfInvestment.size();
     }
 
+    // EFFECTS: get size of filteredList
     public int getNumFilteredInvestment() {
         return filteredList.size();
     }
 
+    // EFFECTS: gets the names of all investments
     public List<String> getInvestmentNames() {
         List<String> accumulator = new ArrayList<String>();
 
@@ -134,6 +137,7 @@ public class ListOfInvestment implements Writable {
         return accumulator;
     }
 
+    // EFFECTS: gets the types of all investments
     public List<String> getInvestmentTypes() {
         List<String> accumulator = new ArrayList<String>();
 
@@ -145,6 +149,7 @@ public class ListOfInvestment implements Writable {
         return accumulator;
     }
 
+    // EFFECTS: prints listOfInvestment in the order of the list elements
     public void getPrintedInvestments() {
         for (Investment i : listOfInvestment) {
             String output = "Name: " + i.getName() + ", " + "\t" + "Type: " + i.getType() + ", " + "\t" 
@@ -156,6 +161,7 @@ public class ListOfInvestment implements Writable {
         }
     }
 
+    // EFFECTS: prints filteredList in the order of the list elements
     public void getPrintedFilteredInvestments() {
         for (Investment i : filteredList) {
             String output = "Name: " + i.getName() + ", " + "\t" + "Type: " + i.getType() + ", " + "\t" 

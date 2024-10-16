@@ -42,6 +42,6 @@ public class JsonReader {
 
     // MODIFIES: loi
     // EFFECTS: parses investment from JSON object and adds to loi
-    private void addInvestment(ListOfInvestment loi, JSONObject jsonObject) 
+    private void addInvestment(ListOfInvestment loi, JSONObject jsonObject) {
     }
 }
