@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 import org.json.*;
 
 // Reads list of investment from stored JSON file
+// Credits to example JsonSerialization demo
 public class JsonReader {
     private String source;
 

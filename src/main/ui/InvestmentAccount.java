@@ -12,7 +12,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 // Investment manager application
-// modelled on sample TellerApp UI
+// Credits to sample TellerApp UI
+// Credits to example JsonSerialization demo
 public class InvestmentAccount {
 
     private Scanner input; // stores user input

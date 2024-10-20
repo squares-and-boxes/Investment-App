@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 // Represents a list of investments, with the core functionalities of filtering, deleting, 
 // and providing summary statistics
+// Credits to example JsonSerialization demo
 public class ListOfInvestment implements Writable {
 
     private List<Investment> listOfInvestment;  // list of investments

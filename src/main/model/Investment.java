@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 // Represents an investment having an investment type, investment name, amount invested, 
 // expected return, date of purchase
+// Credits to example JsonSerialization demo
 public class Investment implements Writable {
     private String type; // investment type
     private String name; // investment name

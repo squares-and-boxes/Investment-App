@@ -7,6 +7,7 @@ import java.io.*;
 
 
 // Represents a writer that writes JSON representation of LOI
+// Credits to example JsonSerialization demo
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;
