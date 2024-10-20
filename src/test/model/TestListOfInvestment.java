@@ -86,7 +86,10 @@ public class TestListOfInvestment {
         testListOfInvestment.filter("Bond");
         assertEquals(1,testListOfInvestment.getNumFilteredInvestment());
         assertEquals(1,testListOfInvestment.getNumInvestment());
+    }
 
+    @Test
+    void testFilterAgain() {
         testListOfInvestment = new ListOfInvestment("name");
         testListOfInvestment.add(investmentOne);
         testListOfInvestment.add(investmentTwo);

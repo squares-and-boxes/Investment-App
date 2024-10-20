@@ -1,9 +1,9 @@
 package persistence;
+
 import model.ListOfInvestment;
+
 import org.json.JSONObject;
 import java.io.*;
-
-import java.io.FileNotFoundException;
 
 
 // Represents a writer that writes JSON representation of LOI

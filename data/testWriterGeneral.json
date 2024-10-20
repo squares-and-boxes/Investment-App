@@ -1,20 +1,19 @@
 {
+    "name_of_account": "My Investments",
     "investments": [
         {
-            "type": "Bond",
-            "name": "CAD GOVN",
+            "date": "2024-01-02",
             "amount": 1000,
-            "expRet": 0.2,
-            "date": "2024-01-02"
-
+            "name": "CAD GOVN",
+            "type": "Bond",
+            "expRet": 0.2
         },
         {
-            "type": "Stock",
-            "name": "META",
+            "date": "2024-01-01",
             "amount": 900,
-            "expRet": 0.5,
-            "date": "2024-01-01"
+            "name": "META",
+            "type": "Stock",
+            "expRet": 0.5
         }
-    ],
-    "name": "My Investments"
+    ]
 }

@@ -63,8 +63,8 @@ public class JsonReader {
     private void addInvestment(ListOfInvestment loi, JSONObject jsonObject) {
         String type = jsonObject.getString("type");
         String name = jsonObject.getString("name");
-        int amount = jsonObject.getInt("amount");
-        int expRet = jsonObject.getInt("expRet");
+        double amount = jsonObject.getDouble("amount");
+        double expRet = jsonObject.getDouble("expRet");
         String date = jsonObject.getString("date");
         
         Investment i = new Investment(type,name,amount,expRet,date);
