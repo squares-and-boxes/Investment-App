@@ -1,0 +1,20 @@
+{
+    "investments": [
+        {
+            "type": "Bond",
+            "name": "CAD GOVN",
+            "amount": 1000,
+            "expRet": 0.2,
+            "date": "2024-01-02"
+
+        },
+        {
+            "type": "Stock",
+            "name": "META",
+            "amount": 900,
+            "expRet": 0.5,
+            "date": "2024-01-01"
+        }
+    ],
+    "name": "My Investments"
+}

@@ -21,7 +21,7 @@ public class InvestmentAccount {
     private String name; // stores investment name
     private String date; // stores investment date
 
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/investments.json";
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
