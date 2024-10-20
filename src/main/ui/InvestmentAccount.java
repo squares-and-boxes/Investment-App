@@ -58,7 +58,7 @@ public class InvestmentAccount {
     // MODIFIES: this
     // EFFECTS: initializes fields
     private void init() {
-        listOfInvestment = new ListOfInvestment();
+        listOfInvestment = new ListOfInvestment("Jack's Investments");
         input = new Scanner(System.in);
         checkRepeatName = new ArrayList<String>();
         input.useDelimiter("\r?\n|\r");
@@ -247,7 +247,7 @@ public class InvestmentAccount {
             jsonWriter.open();
             jsonWriter.write(listOfInvestment);
             jsonWriter.close();
-            System.out.println("Saved investments to" + JSON_STORE);
+            System.out.println("Saved " + listOfInvestment.getName() + " to " + JSON_STORE);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file:" + JSON_STORE);
         }
@@ -258,9 +258,9 @@ public class InvestmentAccount {
     private void loadInvestments() {
         try {
             listOfInvestment = jsonReader.read();
-            System.out.println("Loaded investments from" + JSON_STORE);
+            System.out.println("Loaded investments from " + listOfInvestment.getName() + JSON_STORE);
         } catch (IOException e) {
-            System.out.println("Unable to read investments from" + JSON_STORE);
+            System.out.println("Unable to read investments from " + JSON_STORE);
         }
     }
 }

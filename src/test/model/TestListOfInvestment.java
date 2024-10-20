@@ -24,8 +24,8 @@ public class TestListOfInvestment {
     
     @BeforeEach
     void runBefore() {
-        testListOfInvestment = new ListOfInvestment();
-        testListOfInvestmentAgain = new ListOfInvestment();
+        testListOfInvestment = new ListOfInvestment("name");
+        testListOfInvestmentAgain = new ListOfInvestment("name");
 
         investmentNull = new Investment("Stock", "META STOCK",
                                                   400.5, 0.4, "2024-01-01");
@@ -65,7 +65,7 @@ public class TestListOfInvestment {
         testListOfInvestment.filter("Stock");
         assertEquals(0,testListOfInvestment.getNumInvestment());
 
-        testListOfInvestment = new ListOfInvestment();
+        testListOfInvestment = new ListOfInvestment("name");
         
         testListOfInvestment.add(investmentOne);
         testListOfInvestment.add(investmentTwo);
@@ -74,20 +74,20 @@ public class TestListOfInvestment {
         assertEquals(2,testListOfInvestment.getNumFilteredInvestment());
         assertEquals(3,testListOfInvestment.getNumInvestment());
 
-        testListOfInvestment = new ListOfInvestment();
+        testListOfInvestment = new ListOfInvestment("name");
         testListOfInvestment.add(investmentOne);
         testListOfInvestment.add(investmentTwo);
         testListOfInvestment.filter("Stock");
         assertEquals(2,testListOfInvestment.getNumFilteredInvestment());
         assertEquals(2,testListOfInvestment.getNumInvestment());
 
-        testListOfInvestment = new ListOfInvestment();
+        testListOfInvestment = new ListOfInvestment("name");
         testListOfInvestment.add(investmentThree);
         testListOfInvestment.filter("Bond");
         assertEquals(1,testListOfInvestment.getNumFilteredInvestment());
         assertEquals(1,testListOfInvestment.getNumInvestment());
 
-        testListOfInvestment = new ListOfInvestment();
+        testListOfInvestment = new ListOfInvestment("name");
         testListOfInvestment.add(investmentOne);
         testListOfInvestment.add(investmentTwo);
         testListOfInvestment.add(investmentThree);

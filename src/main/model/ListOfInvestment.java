@@ -19,9 +19,11 @@ public class ListOfInvestment implements Writable {
     private double min = Double.POSITIVE_INFINITY;  // min value of invested amounts
     private double mean;  // mean value of invested amounts
     private double std;  // std of invested amounts
+    private String n; // name of investments list
 
     // EFFECTS: Initializes an empty list of investments
-    public ListOfInvestment() {
+    public ListOfInvestment(String name) {
+        this.n = name;
         listOfInvestment = new ArrayList<Investment>();
         filteredList = new ArrayList<Investment>();
         
@@ -172,10 +174,14 @@ public class ListOfInvestment implements Writable {
             System.out.println(output);
         }
     }
+    public String getName() {
+        return n;
+    }
 
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
+        json.put("name_of_account",n);
         json.put("investments",investmentsToJson());
         return json;
     }

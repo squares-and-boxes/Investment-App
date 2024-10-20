@@ -41,7 +41,8 @@ public class JsonReader {
 
     // EFFECTS: parses list of investment from JSON object and returns it
     private ListOfInvestment parseListOfInvestment(JSONObject jsonObject) {
-        ListOfInvestment loi = new ListOfInvestment();
+        String name = jsonObject.getString("name_of_account");
+        ListOfInvestment loi = new ListOfInvestment(name);
         addInvestments(loi, jsonObject);
         return loi;
     }
