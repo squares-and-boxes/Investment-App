@@ -175,11 +175,19 @@ public class ListOfInvestment implements Writable {
 
     @Override
     public JSONObject toJson() {
-        return null;
+        JSONObject json = new JSONObject();
+        json.put("investments",investmentsToJson());
+        return json;
     }
 
     // EFFECTS: returns investments in this list as a JSON array
     private JSONArray investmentsToJson() {
-        return null;
+        JSONArray jsonArray = new JSONArray();
+
+        for (Investment i : listOfInvestment) {
+            jsonArray.put(i.toJson());
+        }
+
+        return jsonArray;
     }
 }

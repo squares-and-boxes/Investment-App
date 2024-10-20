@@ -60,11 +60,11 @@ public class JsonReader {
     // MODIFIES: loi
     // EFFECTS: parses investment from JSON object and adds to loi
     private void addInvestment(ListOfInvestment loi, JSONObject jsonObject) {
-        String type = jsonObject.getString();
-        String name = jsonObject.getString();
-        int amount = jsonObject.getInt();
-        int expRet = jsonObject.getInt();
-        String date = jsonObject.getString();
+        String type = jsonObject.getString("type");
+        String name = jsonObject.getString("name");
+        int amount = jsonObject.getInt("amount");
+        int expRet = jsonObject.getInt("expRet");
+        String date = jsonObject.getString("date");
         
         Investment i = new Investment(type,name,amount,expRet,date);
         loi.add(i);
