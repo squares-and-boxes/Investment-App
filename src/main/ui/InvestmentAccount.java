@@ -2,9 +2,13 @@ package ui;
 
 import model.Investment;
 import model.ListOfInvestment;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import java.util.Scanner;
 import java.util.List;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 // Investment manager application
@@ -17,8 +21,15 @@ public class InvestmentAccount {
     private String name; // stores investment name
     private String date; // stores investment date
 
+    private static final String JSON_STORE = "./data/workroom.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+
     // EFFECTS: initializes the app interface
-    public InvestmentAccount() {
+    public InvestmentAccount() throws FileNotFoundException {
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
+
         runAccount();
     }
 
@@ -60,23 +71,32 @@ public class InvestmentAccount {
             doStats();
         } else if (c.equals("v")) {
             doView();
-
-            while (true) {
-                displayViewOptions();
-                String commandTwo = input.next().toLowerCase();
-
-                if (commandTwo.equals("a")) {
-                    doAddInvestment();
-                } else if (commandTwo.equals("d")) {
-                    doDelete();
-                } else if (commandTwo.equals("f")) {
-                    doFilter();
-                } else if (commandTwo.equals("q")) {
-                    break;
-                }
-            }
+            handleTwo();
+        } else if (c.equals("save")) {
+            saveInvestments();
+        } else if (c.equals("load")) {
+            loadInvestments();
         } else {
-            System.out.println("Invalid selection");
+            System.out.println("Invalid selection.");
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: processes human inputs for secondary menu
+    private void handleTwo() {
+        while (true) {
+            displayViewOptions();
+            String commandTwo = input.next().toLowerCase();
+
+            if (commandTwo.equals("a")) {
+                doAddInvestment();
+            } else if (commandTwo.equals("d")) {
+                doDelete();
+            } else if (commandTwo.equals("f")) {
+                doFilter();
+            } else if (commandTwo.equals("q")) {
+                break;
+            }
         }
     }
 
@@ -85,6 +105,8 @@ public class InvestmentAccount {
         System.out.println("\nSelect from:");
         System.out.println("\ts -> stats");
         System.out.println("\tv -> view");
+        System.out.println("\tsave -> save investments to file");
+        System.out.println("\tload -> load investments from file");
         System.out.println("\tq -> quit");
     }
 
@@ -217,5 +239,28 @@ public class InvestmentAccount {
         }
         listOfInvestment.filter(commandFour);
         listOfInvestment.getPrintedFilteredInvestments();
+    }
+
+    // EFFECTS: saves loi to file
+    private void saveInvestments() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(listOfInvestment);
+            jsonWriter.close();
+            System.out.println("Saved investments to" + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file:" + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads loi from file
+    private void loadInvestments() {
+        try {
+            listOfInvestment = jsonReader.read();
+            System.out.println("Loaded investments from" + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read investments from" + JSON_STORE);
+        }
     }
 }
