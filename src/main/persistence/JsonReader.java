@@ -67,6 +67,6 @@ public class JsonReader {
         String date = jsonObject.getString();
         
         Investment i = new Investment(type,name,amount,expRet,date);
-        loi.addInvestment(i);
+        loi.add(i);
     }
 }

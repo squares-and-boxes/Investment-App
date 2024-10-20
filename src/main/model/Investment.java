@@ -53,7 +53,13 @@ public class Investment implements Writable {
 
     @Override
     public JSONObject toJson() {
-        return null;
+        JSONObject json = new JSONObject();
+        json.put("type",type);
+        json.put("name",name);
+        json.put("amount",amount);
+        json.put("expRet",expRet);
+        json.put("date",date);
+        return json;
     }
 
 }
