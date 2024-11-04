@@ -227,7 +227,7 @@ public class InvestmentAccount {
         }
     }
 
-    // MODIFIES: thiS
+    // MODIFIES: this
     // EFFECTS: filter investments
     private void doFilter() {
         String commandFour = null;
