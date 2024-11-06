@@ -1,26 +1,4 @@
 {
-    "name_of_account": "Jack's Investments",
-    "investments": [
-        {
-            "date": "2024-05-11",
-            "amount": 500,
-            "name": "JACKJACK",
-            "type": "Bond",
-            "expRet": 0.3
-        },
-        {
-            "date": "2023-01-03",
-            "amount": 600,
-            "name": "JACK",
-            "type": "JACKJACK",
-            "expRet": 0.8
-        },
-        {
-            "date": "2000-00-00",
-            "amount": 6,
-            "name": "y",
-            "type": "op",
-            "expRet": 0
-        }
-    ]
+    "name_of_account": "Investments",
+    "investments": []
 }

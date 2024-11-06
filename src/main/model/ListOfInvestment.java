@@ -184,6 +184,14 @@ public class ListOfInvestment implements Writable {
         return listOfInvestment;
     }
 
+    public List<Investment> getFilteredInvestments() {
+        return filteredList;
+    }
+
+    public void setFilteredInvestments(ArrayList<Investment> l) {
+        filteredList = l;
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
