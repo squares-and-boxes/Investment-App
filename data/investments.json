@@ -1,4 +1,26 @@
 {
     "name_of_account": "Investments",
-    "investments": []
+    "investments": [
+        {
+            "date": "6",
+            "amount": 65,
+            "name": "b",
+            "type": "a",
+            "expRet": 6
+        },
+        {
+            "date": "6",
+            "amount": 5,
+            "name": "ytyt",
+            "type": "a",
+            "expRet": 4
+        },
+        {
+            "date": "4",
+            "amount": 6,
+            "name": "fdfd",
+            "type": "g",
+            "expRet": 5
+        }
+    ]
 }
