@@ -456,23 +456,23 @@ public class InvestmentUI extends JFrame implements ActionListener {
         }
 
         if (!isDouble(fieldAmount)) {
-            JOptionPane.showMessageDialog(frame, "Invested Amount must be a double.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(frame, "Amount must be a double.", "Error", JOptionPane.ERROR_MESSAGE);
             return null;
         }
 
         if (Double.parseDouble(fieldAmount.getText()) < 0) {
-            JOptionPane.showMessageDialog(frame, "Invested Amount must be a positive double.", "Error",
+            JOptionPane.showMessageDialog(frame, "Amount must be a positive double.", "Error",
                     JOptionPane.ERROR_MESSAGE);
             return null;
         }
 
         if (!isDouble(fieldReturn)) {
-            JOptionPane.showMessageDialog(frame, "Expected Return must be a double.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(frame, "Return must be a double.", "Error", JOptionPane.ERROR_MESSAGE);
             return null;
         }
 
         if (Double.parseDouble(fieldReturn.getText()) < 0) {
-            JOptionPane.showMessageDialog(frame, "Expected Return must be a positive double.", "Error",
+            JOptionPane.showMessageDialog(frame, "Return must be a positive double.", "Error",
                     JOptionPane.ERROR_MESSAGE);
             return null;
         }
