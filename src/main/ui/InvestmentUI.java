@@ -36,6 +36,9 @@ public class InvestmentUI extends JFrame implements ActionListener {
     private JPanel panel1;
     private JPanel panelFilt;
 
+    private JWindow windowWelcome;
+    private JWindow windowIcon;
+
     private ListOfInvestment loi; // list of investment
     private Investment inv;
 
@@ -45,35 +48,9 @@ public class InvestmentUI extends JFrame implements ActionListener {
 
     public InvestmentUI() throws FileNotFoundException {
 
-        JWindow windowWelcome = new JWindow();
-        windowWelcome.getContentPane().add(new JLabel("Welcome! :)", SwingConstants.CENTER));
-        windowWelcome.setBounds(575, 300, 300, 200);
-        windowWelcome.setVisible(true);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        windowWelcome.setVisible(false);
-        windowWelcome.dispose();
+        welcomePopUpHelper();
 
-        JWindow windowIcon = new JWindow();
-        try {
-            BufferedImage img = ImageIO.read(new File("/Users/jackwu/Desktop/download.jpg"));
-            JLabel imageLabel = new JLabel(new ImageIcon(img));
-            windowIcon.getContentPane().add(imageLabel);
-            windowIcon.setBounds(575, 300, 225, 200);
-            windowIcon.setVisible(true);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        windowIcon.setVisible(false);
-        windowIcon.dispose();
+        logoPopUpHelper();
 
         loi = new ListOfInvestment("Investments");
         frame = new JFrame("Main Menu");
@@ -123,6 +100,45 @@ public class InvestmentUI extends JFrame implements ActionListener {
         frame.setVisible(true);
 
     }
+
+    // EFFECTS: produce welcome popup
+    private void welcomePopUpHelper() {
+        windowWelcome = new JWindow();
+        windowWelcome.getContentPane().add(new JLabel("Welcome! :)", SwingConstants.CENTER));
+        windowWelcome.setBounds(575, 300, 300, 200);
+        windowWelcome.setVisible(true);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        windowWelcome.setVisible(false);
+        windowWelcome.dispose();
+    }
+
+    // EFFECTS: produce logo popup
+    private void logoPopUpHelper() {
+        windowIcon = new JWindow();
+        try {
+            BufferedImage img = ImageIO.read(new File("/Users/jackwu/Desktop/download.jpg"));
+            JLabel imageLabel = new JLabel(new ImageIcon(img));
+            windowIcon.getContentPane().add(imageLabel);
+            windowIcon.setBounds(575, 300, 225, 200);
+            windowIcon.setVisible(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        windowIcon.setVisible(false);
+        windowIcon.dispose();
+    }
+
+
+
 
     // EFFECTS: produces stats of current investments
     private void runStats() {
