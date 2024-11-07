@@ -1,10 +1,12 @@
 package ui;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,7 +20,6 @@ import persistence.JsonWriter;
 // Credits to example code in project specification for a basic starting code structure
 public class InvestmentUI extends JFrame implements ActionListener {
     private JLabel label; // labels for display
-    private JTextField field; // fields for display
     private JTextField fieldDelete;
     private JTextField fieldFilter;
 
@@ -29,8 +30,9 @@ public class InvestmentUI extends JFrame implements ActionListener {
     private JTextField fieldDate;
 
     private JFrame frame; // frame for display
-    private JPanel panel; // panel for dosplay
+    private JFrame frameFilt;
 
+    private JPanel panel; // panel for dosplay
     private JPanel panel1;
     private JPanel panelFilt;
 
@@ -43,21 +45,37 @@ public class InvestmentUI extends JFrame implements ActionListener {
 
     public InvestmentUI() throws FileNotFoundException {
 
-        JWindow window = new JWindow();
-
-        window.getContentPane().add(new JLabel("Welcome! :)", SwingConstants.CENTER));
-        window.setBounds(575, 300, 300, 200);
-        window.setVisible(true);
+        JWindow windowWelcome = new JWindow();
+        windowWelcome.getContentPane().add(new JLabel("Welcome! :)", SwingConstants.CENTER));
+        windowWelcome.setBounds(575, 300, 300, 200);
+        windowWelcome.setVisible(true);
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        window.setVisible(false);
-        window.dispose();
+        windowWelcome.setVisible(false);
+        windowWelcome.dispose();
+
+        JWindow windowIcon = new JWindow();
+        try {
+            BufferedImage img = ImageIO.read(new File("/Users/jackwu/Desktop/download.jpg"));
+            JLabel imageLabel = new JLabel(new ImageIcon(img));
+            windowIcon.getContentPane().add(imageLabel);
+            windowIcon.setBounds(575, 300, 225, 200);
+            windowIcon.setVisible(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        windowIcon.setVisible(false);
+        windowIcon.dispose();
 
         loi = new ListOfInvestment("Investments");
-
         frame = new JFrame("Main Menu");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setLayout(new FlowLayout(FlowLayout.CENTER, 225, 225));
@@ -295,6 +313,8 @@ public class InvestmentUI extends JFrame implements ActionListener {
             System.exit(0);
         } else if (e.getActionCommand().equals("stat")) {
             runStats();
+        } else if (e.getActionCommand().equals("bbb")) {
+            frameFilt.dispose();
         } else if (e.getActionCommand().equals("back")) {
             frame.dispose();
         } else if (e.getActionCommand().equals("view")) {
@@ -341,28 +361,28 @@ public class InvestmentUI extends JFrame implements ActionListener {
                 return;
             }
 
-            frame = new JFrame("Filtered");
-            frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-            frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.X_AXIS));
+            frameFilt = new JFrame("Filtered");
+            frameFilt.setDefaultCloseOperation(EXIT_ON_CLOSE);
+            frameFilt.setLayout(new BoxLayout(frameFilt.getContentPane(), BoxLayout.X_AXIS));
 
             panelFilt = new JPanel();
             panelFilt.setAlignmentX(Component.CENTER_ALIGNMENT);
             panelFilt.setPreferredSize(new Dimension(425, 130));
             panelFilt.setBorder(BorderFactory.createTitledBorder("Investments"));
-            frame.getContentPane().add(panelFilt);
+            frameFilt.getContentPane().add(panelFilt);
 
             printFilteredInvs();
             fieldFilter.setText("");
 
             JButton backBtn = new JButton("Back");
             panelFilt.add(backBtn);
-            backBtn.setActionCommand("back");
+            backBtn.setActionCommand("bbb");
             backBtn.addActionListener(this);
 
-            frame.pack();
-            frame.setSize(600, 620);
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
+            frameFilt.pack();
+            frameFilt.setSize(600, 620);
+            frameFilt.setLocationRelativeTo(null);
+            frameFilt.setVisible(true);
 
         } else if (e.getActionCommand().equals("add")) {
 
