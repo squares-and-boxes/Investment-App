@@ -81,7 +81,6 @@ public class InvestmentUI extends JFrame implements ActionListener {
         frame.setLayout(new FlowLayout(FlowLayout.CENTER, 225, 225));
 
         JPanel panel = new JPanel();
-
         JButton btn1 = new JButton("Stats");
         btn1.setActionCommand("stat");
         btn1.addActionListener(this);
