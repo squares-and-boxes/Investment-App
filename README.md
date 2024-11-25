@@ -48,3 +48,7 @@ Investment deleted from account.
 
 Mon Nov 25 02:04:17 PST 2024
 Investments filtered.
+
+## Phase 4: Task 3
+
+Seeing that my application is quite simple, where only a list of items is maintained in the model, there are not many refactoring possibilites. The main refactoring I would make is to add an abstract UI class to the UI package, and have investmentAccount (console application) and investmentUI (GUI application) respectively extend that class. In the abstract class, there would core methods that both UI packages have, for instance initializing JSON and ListOfInvestment fields. This is due to noticeable amounts of code duplication between investmentAccount and investmentUI, particularly in the constructor and fields, given that they both produce UIs using the same model functionality and references.
