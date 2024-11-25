@@ -33,3 +33,18 @@ User stories:
 - You can save the state of my application by clicking *save* on the main menu
 
 - You can reload the state of my application by clicking *load* on the main menu
+
+
+## Phase 4: Task 2
+
+Mon Nov 25 02:03:53 PST 2024
+Investment added to account.
+
+Mon Nov 25 02:04:05 PST 2024
+Investment added to account.
+
+Mon Nov 25 02:04:08 PST 2024
+Investment deleted from account.
+
+Mon Nov 25 02:04:17 PST 2024
+Investments filtered.
