@@ -3,14 +3,15 @@ package ui;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import model.EventLog;
+import model.Event;
 import model.Investment;
 import model.ListOfInvestment;
 import persistence.JsonReader;
@@ -61,7 +62,9 @@ public class InvestmentUI extends JFrame implements ActionListener {
 
         loi = new ListOfInvestment("Investments");
         frame = new JFrame("Main Menu");
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        initializeCloseMechanism();
+
         frame.setLayout(new FlowLayout(FlowLayout.CENTER, 225, 225));
 
         initializeButtonsHelper();
@@ -163,7 +166,7 @@ public class InvestmentUI extends JFrame implements ActionListener {
         frame = new JFrame("Statistics");
         panel = new JPanel();
 
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        initializeCloseMechanism();
         frame.setLayout(new FlowLayout(FlowLayout.CENTER, 225, 225));
 
         panel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -201,7 +204,7 @@ public class InvestmentUI extends JFrame implements ActionListener {
     // EFFECTS: runs view window
     private void runView() {
         frame = new JFrame("View");
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        initializeCloseMechanism();
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.X_AXIS));
 
         panel1 = new JPanel();
@@ -306,7 +309,7 @@ public class InvestmentUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("quit")) {
-            System.exit(0);
+            runClose();
         } else if (e.getActionCommand().equals("stat")) {
             runStats();
         } else if (e.getActionCommand().equals("bbb")) {
@@ -326,6 +329,15 @@ public class InvestmentUI extends JFrame implements ActionListener {
         } else if (e.getActionCommand().equals("add")) {
             runAdd();
         }
+    }
+
+    // EFFECTS: run close operations
+    private void runClose() {
+        for (Event e : EventLog.getInstance()) {
+            System.out.println(e + "\n");
+        }
+        EventLog.getInstance().clear();
+        System.exit(0);
     }
 
     // EFFECTS: run filter operations
@@ -503,7 +515,7 @@ public class InvestmentUI extends JFrame implements ActionListener {
     // EFFECTS: initialize filter frame and panel and print filtered investments
     private void initializeFilterDisplay() {
         frameFilt = new JFrame("Filtered");
-        frameFilt.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        initializeCloseMechanism();
         frameFilt.setLayout(new BoxLayout(frameFilt.getContentPane(), BoxLayout.X_AXIS));
 
         panelFilt = new JPanel();
@@ -546,6 +558,17 @@ public class InvestmentUI extends JFrame implements ActionListener {
         JOptionPane.showMessageDialog(this, str, "Message", JOptionPane.PLAIN_MESSAGE);
     }
 
+    // EFFECTS: run close sequence, including printing out event log
+    private void initializeCloseMechanism() {
+        frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                runClose();
+            }
+        });
+    }
+
     // EFFECTS: start application
     public static void main(String[] args) {
         try {
@@ -554,5 +577,6 @@ public class InvestmentUI extends JFrame implements ActionListener {
             System.out.println("Unable to run application: file not found...");
         }
     }
+
 
 }

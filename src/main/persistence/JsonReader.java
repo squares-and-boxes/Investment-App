@@ -26,6 +26,7 @@ public class JsonReader {
     public ListOfInvestment read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
+
         return parseListOfInvestment(jsonObject);
     }
 
