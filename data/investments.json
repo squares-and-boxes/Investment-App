@@ -1,10 +1,4 @@
 {
     "name_of_account": "Investments",
-    "investments": [{
-        "date": "45",
-        "amount": 564,
-        "name": "rgerg",
-        "type": "ggreg",
-        "expRet": 5
-    }]
+    "investments": []
 }

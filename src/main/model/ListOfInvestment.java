@@ -40,6 +40,7 @@ public class ListOfInvestment implements Writable {
     // EFFECTS: adds investment to the list of investments
     public void add(Investment investment) {
         listOfInvestment.add(investment);
+        EventLog.getInstance().logEvent(new Event("Investment added to account."));
     }
 
     // REQUIRES: key is a type of investment that is already present.]
@@ -52,6 +53,7 @@ public class ListOfInvestment implements Writable {
                 filteredList.add(i);
             }
         }
+        EventLog.getInstance().logEvent(new Event("Investments filtered."));
     }
 
     // REQUIRES: key is an investment name that is already present.
@@ -66,6 +68,7 @@ public class ListOfInvestment implements Writable {
                 break;
             }
         }
+        EventLog.getInstance().logEvent(new Event("Investment deleted from account."));
     }
 
     // REQUIRES: listOfInvestment is non-empty
