@@ -99,7 +99,7 @@ public class InvestmentUI extends JFrame implements ActionListener {
     private void logoPopUpHelper() {
         windowIcon = new JWindow();
         try {
-            BufferedImage img = ImageIO.read(new File("/Users/jackwu/Desktop/download.jpg"));
+            BufferedImage img = ImageIO.read(new File("data/download.jpg"));
             JLabel imageLabel = new JLabel(new ImageIcon(img));
             windowIcon.getContentPane().add(imageLabel);
             windowIcon.setBounds(575, 300, 225, 200);
